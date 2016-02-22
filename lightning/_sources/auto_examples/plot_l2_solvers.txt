@@ -1,0 +1,35 @@
+
+
+.. _example_plot_l2_solvers.py:
+
+
+=====================
+L2 solver comparison
+=====================
+
+This example compares different solvers with L2 regularization.
+
+
+
+.. image:: images/plot_l2_solvers_001.png
+    :align: center
+
+
+**Script output**::
+
+  SVRG
+  SDCA
+  PCD
+  AdaGrad
+  SAG
+
+
+
+**Python source code:** :download:`plot_l2_solvers.py <plot_l2_solvers.py>`
+
+.. literalinclude:: plot_l2_solvers.py
+    :lines: 8-
+
+**Total running time of the example:**  2.08 seconds
+( 0 minutes  2.08 seconds)
+    
