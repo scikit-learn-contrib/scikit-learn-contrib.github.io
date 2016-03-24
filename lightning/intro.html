@@ -33,7 +33,6 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="lightning dev documentation" href="index.html" />
-    <link rel="next" title="Examples" href="auto_examples/index.html" />
     <link rel="prev" title="lightning.ranking.KernelPRank" href="generated/lightning.ranking.KernelPRank.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -41,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -198,12 +197,12 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>lightning is composed of three modules: classification, regression and ranking.
 Several solvers are available from each.</p>
-<p>If you&#8217;re not sure what solver to use, just go for <tt class="xref py py-class docutils literal"><span class="pre">CDClassifier</span></tt> /
-<tt class="xref py py-class docutils literal"><span class="pre">CDRegressor</span></tt> or <tt class="xref py py-class docutils literal"><span class="pre">SDCAClassifier</span></tt> / <tt class="xref py py-class docutils literal"><span class="pre">SDCARegressor</span></tt>. They
+<p>If you&#8217;re not sure what solver to use, just go for <code class="xref py py-class docutils literal"><span class="pre">CDClassifier</span></code> /
+<code class="xref py py-class docutils literal"><span class="pre">CDRegressor</span></code> or <code class="xref py py-class docutils literal"><span class="pre">SDCAClassifier</span></code> / <code class="xref py py-class docutils literal"><span class="pre">SDCARegressor</span></code>. They
 are very fast and do not require any tedious tuning of a learning rate.</p>
 <div class="section" id="primal-coordinate-descent">
 <h2>Primal coordinate descent<a class="headerlink" href="#primal-coordinate-descent" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">CDClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">CDRegressor</span></tt></p>
+<p><code class="xref py py-class docutils literal"><span class="pre">CDClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">CDRegressor</span></code></p>
 <ul class="simple">
 <li>Main idea: update a single coordinate at a time (closed-form update when possible, coordinate-wise gradient descent otherwise)</li>
 <li>Non-smooth losses: No</li>
@@ -214,8 +213,8 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="dual-coordinate-ascent">
 <h2>Dual coordinate ascent<a class="headerlink" href="#dual-coordinate-ascent" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">LinearSVC</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">LinearSVR</span></tt> (L2-regularization, supports shrinking)</p>
-<p><tt class="xref py py-class docutils literal"><span class="pre">SDCAClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">SDCARegressor</span></tt> (Elastic-net, supports many losses)</p>
+<p><code class="xref py py-class docutils literal"><span class="pre">LinearSVC</span></code>, <code class="xref py py-class docutils literal"><span class="pre">LinearSVR</span></code> (L2-regularization, supports shrinking)</p>
+<p><code class="xref py py-class docutils literal"><span class="pre">SDCAClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SDCARegressor</span></code> (Elastic-net, supports many losses)</p>
 <ul class="simple">
 <li>Main idea: update a single dual coordinate at a time (closed-form solution available for many loss functions)</li>
 <li>Non-smooth losses: Yes</li>
@@ -226,7 +225,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="fista">
 <h2>FISTA<a class="headerlink" href="#fista" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">FistaClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">FistaRegressor</span></tt></p>
+<p><code class="xref py py-class docutils literal"><span class="pre">FistaClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">FistaRegressor</span></code></p>
 <ul class="simple">
 <li>Main idea: accelerated proximal gradient method (uses full gradients)</li>
 <li>Non-smooth losses: No</li>
@@ -237,7 +236,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="stochastic-gradient-method-sgd">
 <h2>Stochastic gradient method (SGD)<a class="headerlink" href="#stochastic-gradient-method-sgd" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></tt></p>
+<p><code class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></code></p>
 <ul class="simple">
 <li>Main idea: replace full gradient with stochastic estimate obtained from a single sample</li>
 <li>Non-smooth losses: Yes</li>
@@ -248,7 +247,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="adagrad">
 <h2>AdaGrad<a class="headerlink" href="#adagrad" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">AdaGradClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">AdaGradRegressor</span></tt></p>
+<p><code class="xref py py-class docutils literal"><span class="pre">AdaGradClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">AdaGradRegressor</span></code></p>
 <ul class="simple">
 <li>Main idea: use per-feature learning rates (frequently occurring features in the gradients get small learning rates and infrequent features get higher ones)</li>
 <li>Non-smooth losses: Yes</li>
@@ -259,7 +258,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="stochastic-averaged-gradient-sag">
 <h2>Stochastic averaged gradient (SAG)<a class="headerlink" href="#stochastic-averaged-gradient-sag" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">SAGClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">SAGRegressor</span></tt></p>
+<p><code class="xref py py-class docutils literal"><span class="pre">SAGClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SAGRegressor</span></code></p>
 <ul class="simple">
 <li>Main idea: instead of using the full gradient (average of sample-wise gradients), compute gradient for a randomly selected sample and use out-dated gradients for other samples</li>
 <li>Non-smooth losses: No</li>
@@ -270,7 +269,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="stochastic-variance-reduced-gradient-svrg">
 <h2>Stochastic variance-reduced gradient (SVRG)<a class="headerlink" href="#stochastic-variance-reduced-gradient-svrg" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">SVRGClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">SVRGRegressor</span></tt></p>
+<p><code class="xref py py-class docutils literal"><span class="pre">SVRGClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SVRGRegressor</span></code></p>
 <ul class="simple">
 <li>Main idea: compute full gradient periodically and use it to center the gradient estimate (this can be shown to reduce the variance)</li>
 <li>Non-smooth losses: No</li>
@@ -281,7 +280,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="prank">
 <h2>PRank<a class="headerlink" href="#prank" title="Permalink to this headline">¶</a></h2>
-<p><tt class="xref py py-class docutils literal"><span class="pre">PRank</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">KernelPRank</span></tt></p>
+<p><code class="xref py py-class docutils literal"><span class="pre">PRank</span></code>, <code class="xref py py-class docutils literal"><span class="pre">KernelPRank</span></code></p>
 <ul class="simple">
 <li>Main idea: Perceptron-like algorithm for ordinal regression</li>
 <li>Penalties: L2</li>
@@ -302,7 +301,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
     </p>
     <p>
         &copy; Copyright Mathieu Blondel.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
     </p>
   </div>
 </footer>

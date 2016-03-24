@@ -42,7 +42,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -199,7 +199,7 @@
 <h1>lightning.classification.KernelSVC<a class="headerlink" href="#lightning-classification-kernelsvc" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="lightning.classification.KernelSVC">
-<em class="property">class </em><tt class="descclassname">lightning.classification.</tt><tt class="descname">KernelSVC</tt><big>(</big><em>alpha=1.0</em>, <em>solver='cg'</em>, <em>max_iter=50</em>, <em>tol=0.001</em>, <em>kernel='linear'</em>, <em>gamma=0.1</em>, <em>coef0=1</em>, <em>degree=4</em>, <em>random_state=None</em>, <em>verbose=0</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#lightning.classification.KernelSVC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">lightning.classification.</code><code class="descname">KernelSVC</code><span class="sig-paren">(</span><em>alpha=1.0</em>, <em>solver='cg'</em>, <em>max_iter=50</em>, <em>tol=0.001</em>, <em>kernel='linear'</em>, <em>gamma=0.1</em>, <em>coef0=1</em>, <em>degree=4</em>, <em>random_state=None</em>, <em>verbose=0</em>, <em>n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/primal_newton.html#KernelSVC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.classification.KernelSVC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimator for learning kernel SVMs by Newton&#8217;s method.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -259,40 +259,40 @@ Ignored by other kernels.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#lightning.classification.KernelSVC.decision_function" title="lightning.classification.KernelSVC.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#lightning.classification.KernelSVC.decision_function" title="lightning.classification.KernelSVC.decision_function"><code class="xref py py-obj docutils literal"><span class="pre">decision_function</span></code></a>(X)</td>
 <td>Return the decision function for test vectors X.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#lightning.classification.KernelSVC.fit" title="lightning.classification.KernelSVC.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#lightning.classification.KernelSVC.fit" title="lightning.classification.KernelSVC.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X,&nbsp;y)</td>
 <td>Fit model according to X and y.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#lightning.classification.KernelSVC.get_params" title="lightning.classification.KernelSVC.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#lightning.classification.KernelSVC.get_params" title="lightning.classification.KernelSVC.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
 <td>Get parameters for this estimator.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">n_nonzero</span></tt>([percentage])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">n_nonzero</span></code>([percentage])</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt>(X)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code>(X)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt>(X)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></code>(X)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#lightning.classification.KernelSVC.score" title="lightning.classification.KernelSVC.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#lightning.classification.KernelSVC.score" title="lightning.classification.KernelSVC.score"><code class="xref py py-obj docutils literal"><span class="pre">score</span></code></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
 <td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#lightning.classification.KernelSVC.set_params" title="lightning.classification.KernelSVC.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-even"><td><a class="reference internal" href="#lightning.classification.KernelSVC.set_params" title="lightning.classification.KernelSVC.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
 <td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="lightning.classification.KernelSVC.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>solver='cg'</em>, <em>max_iter=50</em>, <em>tol=0.001</em>, <em>kernel='linear'</em>, <em>gamma=0.1</em>, <em>coef0=1</em>, <em>degree=4</em>, <em>random_state=None</em>, <em>verbose=0</em>, <em>n_jobs=1</em><big>)</big><a class="headerlink" href="#lightning.classification.KernelSVC.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>alpha=1.0</em>, <em>solver='cg'</em>, <em>max_iter=50</em>, <em>tol=0.001</em>, <em>kernel='linear'</em>, <em>gamma=0.1</em>, <em>coef0=1</em>, <em>degree=4</em>, <em>random_state=None</em>, <em>verbose=0</em>, <em>n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/primal_newton.html#KernelSVC.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.classification.KernelSVC.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="lightning.classification.KernelSVC.decision_function">
-<tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#lightning.classification.KernelSVC.decision_function" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decision_function</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/primal_newton.html#KernelSVC.decision_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.classification.KernelSVC.decision_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the decision function for test vectors X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -313,7 +313,7 @@ Ignored by other kernels.</p>
 
 <dl class="method">
 <dt id="lightning.classification.KernelSVC.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#lightning.classification.KernelSVC.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/primal_newton.html#KernelSVC.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.classification.KernelSVC.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit model according to X and y.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -342,7 +342,7 @@ and n_features is the number of features.</p>
 
 <dl class="method">
 <dt id="lightning.classification.KernelSVC.get_params">
-<tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#lightning.classification.KernelSVC.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#lightning.classification.KernelSVC.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -367,7 +367,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="lightning.classification.KernelSVC.score">
-<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#lightning.classification.KernelSVC.score" title="Permalink to this definition">¶</a></dt>
+<code class="descname">score</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>sample_weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lightning.classification.KernelSVC.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the mean accuracy on the given test data and labels.</p>
 <p>In multi-label classification, this is the subset accuracy
 which is a harsh metric since you require for each sample that
@@ -402,11 +402,11 @@ each label set be correctly predicted.</p>
 
 <dl class="method">
 <dt id="lightning.classification.KernelSVC.set_params">
-<tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#lightning.classification.KernelSVC.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#lightning.classification.KernelSVC.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
-<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it&#8217;s possible to update each
 component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -432,7 +432,7 @@ component of a nested object.</p>
     </p>
     <p>
         &copy; Copyright Mathieu Blondel.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
     </p>
   </div>
 </footer>

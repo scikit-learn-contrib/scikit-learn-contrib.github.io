@@ -42,7 +42,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -199,7 +199,7 @@
 <h1>lightning.regression.SGDRegressor<a class="headerlink" href="#lightning-regression-sgdregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="lightning.regression.SGDRegressor">
-<em class="property">class </em><tt class="descclassname">lightning.regression.</tt><tt class="descname">SGDRegressor</tt><big>(</big><em>loss='squared'</em>, <em>penalty='l2'</em>, <em>alpha=0.01</em>, <em>learning_rate='pegasos'</em>, <em>eta0=0.03</em>, <em>power_t=0.5</em>, <em>epsilon=0.01</em>, <em>fit_intercept=True</em>, <em>intercept_decay=1.0</em>, <em>max_iter=10</em>, <em>shuffle=True</em>, <em>random_state=None</em>, <em>callback=None</em>, <em>n_calls=100</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#lightning.regression.SGDRegressor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">lightning.regression.</code><code class="descname">SGDRegressor</code><span class="sig-paren">(</span><em>loss='squared'</em>, <em>penalty='l2'</em>, <em>alpha=0.01</em>, <em>learning_rate='pegasos'</em>, <em>eta0=0.03</em>, <em>power_t=0.5</em>, <em>epsilon=0.01</em>, <em>fit_intercept=True</em>, <em>intercept_decay=1.0</em>, <em>max_iter=10</em>, <em>shuffle=True</em>, <em>random_state=None</em>, <em>callback=None</em>, <em>n_calls=100</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sgd.html#SGDRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SGDRegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimator for learning linear regressors by SGD.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -281,34 +281,34 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.fit" title="lightning.regression.SGDRegressor.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.fit" title="lightning.regression.SGDRegressor.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X,&nbsp;y)</td>
 <td>Fit model according to X and y.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.get_params" title="lightning.regression.SGDRegressor.get_params"><tt class="xref py py-obj docutils literal"><span class="pre">get_params</span></tt></a>([deep])</td>
+<tr class="row-even"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.get_params" title="lightning.regression.SGDRegressor.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
 <td>Get parameters for this estimator.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">n_nonzero</span></tt>([percentage])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">n_nonzero</span></code>([percentage])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.predict" title="lightning.regression.SGDRegressor.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.predict" title="lightning.regression.SGDRegressor.predict"><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></a>(X)</td>
 <td>Perform regression on an array of test vectors X.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.score" title="lightning.regression.SGDRegressor.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.score" title="lightning.regression.SGDRegressor.score"><code class="xref py py-obj docutils literal"><span class="pre">score</span></code></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
 <td>Returns the coefficient of determination R^2 of the prediction.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.set_params" title="lightning.regression.SGDRegressor.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-even"><td><a class="reference internal" href="#lightning.regression.SGDRegressor.set_params" title="lightning.regression.SGDRegressor.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
 <td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="lightning.regression.SGDRegressor.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>loss='squared'</em>, <em>penalty='l2'</em>, <em>alpha=0.01</em>, <em>learning_rate='pegasos'</em>, <em>eta0=0.03</em>, <em>power_t=0.5</em>, <em>epsilon=0.01</em>, <em>fit_intercept=True</em>, <em>intercept_decay=1.0</em>, <em>max_iter=10</em>, <em>shuffle=True</em>, <em>random_state=None</em>, <em>callback=None</em>, <em>n_calls=100</em>, <em>verbose=0</em><big>)</big><a class="headerlink" href="#lightning.regression.SGDRegressor.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>loss='squared'</em>, <em>penalty='l2'</em>, <em>alpha=0.01</em>, <em>learning_rate='pegasos'</em>, <em>eta0=0.03</em>, <em>power_t=0.5</em>, <em>epsilon=0.01</em>, <em>fit_intercept=True</em>, <em>intercept_decay=1.0</em>, <em>max_iter=10</em>, <em>shuffle=True</em>, <em>random_state=None</em>, <em>callback=None</em>, <em>n_calls=100</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sgd.html#SGDRegressor.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SGDRegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="lightning.regression.SGDRegressor.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#lightning.regression.SGDRegressor.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sgd.html#SGDRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SGDRegressor.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit model according to X and y.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -337,7 +337,7 @@ and n_features is the number of features.</p>
 
 <dl class="method">
 <dt id="lightning.regression.SGDRegressor.get_params">
-<tt class="descname">get_params</tt><big>(</big><em>deep=True</em><big>)</big><a class="headerlink" href="#lightning.regression.SGDRegressor.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#lightning.regression.SGDRegressor.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -362,7 +362,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="lightning.regression.SGDRegressor.predict">
-<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#lightning.regression.SGDRegressor.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sgd.html#SGDRegressor.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SGDRegressor.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform regression on an array of test vectors X.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -383,7 +383,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="method">
 <dt id="lightning.regression.SGDRegressor.score">
-<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#lightning.regression.SGDRegressor.score" title="Permalink to this definition">¶</a></dt>
+<code class="descname">score</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>sample_weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lightning.regression.SGDRegressor.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
 <p>The coefficient R^2 is defined as (1 - u/v), where u is the regression
 sum of squares ((y_true - y_pred) ** 2).sum() and v is the residual
@@ -422,11 +422,11 @@ would get a R^2 score of 0.0.</p>
 
 <dl class="method">
 <dt id="lightning.regression.SGDRegressor.set_params">
-<tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#lightning.regression.SGDRegressor.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#lightning.regression.SGDRegressor.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The former have parameters of the form
-<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it&#8217;s possible to update each
 component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -452,7 +452,7 @@ component of a nested object.</p>
     </p>
     <p>
         &copy; Copyright Mathieu Blondel.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.<br/>
     </p>
   </div>
 </footer>
