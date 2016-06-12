@@ -281,6 +281,29 @@
 <span class="sd">        minimize_w  1 / n_samples * \sum_i loss(w^T x_i, y_i)</span>
 <span class="sd">                    + alpha * l1_ratio * ||w||_1</span>
 <span class="sd">                    + alpha * (1 - l1_ratio) * 0.5 * ||w||^2_2</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    loss: string, {&#39;squared&#39;, &#39;absolute&#39;, &#39;hinge&#39;, &#39;smooth_hinge&#39;, &#39;squared_hinge&#39;}</span>
+<span class="sd">         Loss function to use in the model.</span>
+<span class="sd">    alpha: float</span>
+<span class="sd">         Amount of regularization (see model formulation above).</span>
+<span class="sd">    l1_ratio: float</span>
+<span class="sd">         Ratio between the L1 and L2 regularization (see model formulation above).</span>
+<span class="sd">    gamma : float</span>
+<span class="sd">        gamma parameter in the &quot;smooth_hinge&quot; loss (not used for other</span>
+<span class="sd">        loss functions)</span>
+<span class="sd">    tol : float</span>
+<span class="sd">        stopping criterion tolerance.</span>
+<span class="sd">    max_iter : int</span>
+<span class="sd">        maximum number of outer iterations (also known as epochs).</span>
+<span class="sd">    verbose : int</span>
+<span class="sd">        verbosity level. Set positive to print progress information.</span>
+<span class="sd">    callback : callable or None</span>
+<span class="sd">        if given, callback(self) will be called on each outer iteration</span>
+<span class="sd">        (epoch).</span>
+<span class="sd">    random_state: int or RandomState</span>
+<span class="sd">        Pseudo-random number generator state used for random sampling.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="SDCAClassifier.__init__"><a class="viewcode-back" href="../../../generated/lightning.classification.SDCAClassifier.html#lightning.classification.SDCAClassifier.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;hinge&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -323,15 +346,34 @@
 <span class="sd">        minimize_w  1 / n_samples * \sum_i loss(w^T x_i, y_i)</span>
 <span class="sd">                    + alpha * l1_ratio * ||w||_1</span>
 <span class="sd">                    + alpha * (1 - l1_ratio) * 0.5 * ||w||^2_2</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    loss: string, {&#39;squared&#39;, &#39;absolute&#39;}</span>
+<span class="sd">         Loss function to use in the model.</span>
+<span class="sd">    alpha: float</span>
+<span class="sd">         Amount of regularization (see model formulation above).</span>
+<span class="sd">    l1_ratio: float</span>
+<span class="sd">         Ratio between the L1 and L2 regularization (see model formulation above).</span>
+<span class="sd">    tol : float</span>
+<span class="sd">        stopping criterion tolerance.</span>
+<span class="sd">    max_iter : int</span>
+<span class="sd">        maximum number of outer iterations (also known as epochs).</span>
+<span class="sd">    verbose : int</span>
+<span class="sd">        verbosity level. Set positive to print progress information.</span>
+<span class="sd">    callback : callable or None</span>
+<span class="sd">        if given, callback(self) will be called on each outer iteration</span>
+<span class="sd">        (epoch).</span>
+<span class="sd">    random_state: int or RandomState</span>
+<span class="sd">        Pseudo-random number generator state used for random sampling.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="SDCARegressor.__init__"><a class="viewcode-back" href="../../../generated/lightning.regression.SDCARegressor.html#lightning.classification.SDCARegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;squared&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<div class="viewcode-block" id="SDCARegressor.__init__"><a class="viewcode-back" href="../../../generated/lightning.regression.SDCARegressor.html#lightning.classification.SDCARegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">l1_ratio</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;squared&quot;</span><span class="p">,</span>
                  <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_calls</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">random_state</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">l1_ratio</span> <span class="o">=</span> <span class="n">l1_ratio</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span>

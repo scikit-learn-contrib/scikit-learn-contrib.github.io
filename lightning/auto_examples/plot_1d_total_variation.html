@@ -208,11 +208,12 @@ then try to recover that signal using L1 and TV1D penalties.</p>
 <blockquote>
 <div>y = sign(X ground_truth + noise)</div></blockquote>
 <p>where X is a random matrix. We obtain the vector ground_truth by solving
-an optimization problem using lightning FistaClassifier.</p>
+an optimization problem using lightning&#8217;s <a class="reference internal" href="../generated/lightning.classification.FistaClassifier.html#lightning.classification.FistaClassifier" title="lightning.classification.FistaClassifier"><code class="xref py py-class docutils literal"><span class="pre">lightning.classification.FistaClassifier</span></code></a>.</p>
 <p>The 1D total variation is also known as fused lasso.</p>
 <img alt="../_images/plot_1d_total_variation_001.png" class="align-center" src="../_images/plot_1d_total_variation_001.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_1d_total_variation.py"><code class="xref download docutils literal"><span class="pre">plot_1d_total_variation.py</span></code></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Author: Fabian Pedregosa &lt;f@bianp.net&gt;</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">lightning.classification</span> <span class="kn">import</span> <span class="n">FistaClassifier</span>
@@ -243,8 +244,8 @@ an optimization problem using lightning FistaClassifier.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.90 seconds
-( 0 minutes  0.90 seconds)</p>
+<p><strong>Total running time of the example:</strong>  0.92 seconds
+( 0 minutes  0.92 seconds)</p>
 </div>
 
 

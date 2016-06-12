@@ -76,6 +76,7 @@
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
@@ -126,6 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-variance-reduced-gradient-svrg">Stochastic variance-reduced gradient (SVRG)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../intro.html#prank">PRank</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
@@ -214,6 +216,52 @@
 </dd>
 </dl>
 </div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>loss: string, {&#8216;squared&#8217;, &#8216;absolute&#8217;, &#8216;hinge&#8217;, &#8216;smooth_hinge&#8217;, &#8216;squared_hinge&#8217;}</strong> :</p>
+<blockquote>
+<div><p>Loss function to use in the model.</p>
+</div></blockquote>
+<p><strong>alpha: float</strong> :</p>
+<blockquote>
+<div><p>Amount of regularization (see model formulation above).</p>
+</div></blockquote>
+<p><strong>l1_ratio: float</strong> :</p>
+<blockquote>
+<div><p>Ratio between the L1 and L2 regularization (see model formulation above).</p>
+</div></blockquote>
+<p><strong>gamma</strong> : float</p>
+<blockquote>
+<div><p>gamma parameter in the &#8220;smooth_hinge&#8221; loss (not used for other
+loss functions)</p>
+</div></blockquote>
+<p><strong>tol</strong> : float</p>
+<blockquote>
+<div><p>stopping criterion tolerance.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int</p>
+<blockquote>
+<div><p>maximum number of outer iterations (also known as epochs).</p>
+</div></blockquote>
+<p><strong>verbose</strong> : int</p>
+<blockquote>
+<div><p>verbosity level. Set positive to print progress information.</p>
+</div></blockquote>
+<p><strong>callback</strong> : callable or None</p>
+<blockquote>
+<div><p>if given, callback(self) will be called on each outer iteration
+(epoch).</p>
+</div></blockquote>
+<p><strong>random_state: int or RandomState</strong> :</p>
+<blockquote class="last">
+<div><p>Pseudo-random number generator state used for random sampling.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>

@@ -76,6 +76,7 @@
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
@@ -126,6 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-variance-reduced-gradient-svrg">Stochastic variance-reduced gradient (SVRG)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../intro.html#prank">PRank</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
@@ -201,7 +203,7 @@
 <h1>lightning.regression.SDCARegressor<a class="headerlink" href="#lightning-regression-sdcaregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="lightning.regression.SDCARegressor">
-<em class="property">class </em><code class="descclassname">lightning.regression.</code><code class="descname">SDCARegressor</code><span class="sig-paren">(</span><em>alpha=1.0</em>, <em>l1_ratio=0</em>, <em>loss='squared'</em>, <em>gamma=1.0</em>, <em>max_iter=100</em>, <em>tol=0.001</em>, <em>callback=None</em>, <em>n_calls=None</em>, <em>verbose=0</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sdca.html#SDCARegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SDCARegressor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">lightning.regression.</code><code class="descname">SDCARegressor</code><span class="sig-paren">(</span><em>alpha=1.0</em>, <em>l1_ratio=0</em>, <em>loss='squared'</em>, <em>max_iter=100</em>, <em>tol=0.001</em>, <em>callback=None</em>, <em>n_calls=None</em>, <em>verbose=0</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sdca.html#SDCARegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SDCARegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimator for learning linear regressors by (proximal) SDCA.</p>
 <p>Solves the following objective:</p>
 <blockquote>
@@ -214,6 +216,25 @@
 </dd>
 </dl>
 </div></blockquote>
+<dl class="docutils">
+<dt>loss: string, {&#8216;squared&#8217;, &#8216;absolute&#8217;}</dt>
+<dd>Loss function to use in the model.</dd>
+<dt>alpha: float</dt>
+<dd>Amount of regularization (see model formulation above).</dd>
+<dt>l1_ratio: float</dt>
+<dd>Ratio between the L1 and L2 regularization (see model formulation above).</dd>
+<dt>tol <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>stopping criterion tolerance.</dd>
+<dt>max_iter <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>maximum number of outer iterations (also known as epochs).</dd>
+<dt>verbose <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>verbosity level. Set positive to print progress information.</dd>
+<dt>callback <span class="classifier-delimiter">:</span> <span class="classifier">callable or None</span></dt>
+<dd>if given, callback(self) will be called on each outer iteration
+(epoch).</dd>
+<dt>random_state: int or RandomState</dt>
+<dd>Pseudo-random number generator state used for random sampling.</dd>
+</dl>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -243,7 +264,7 @@
 </table>
 <dl class="method">
 <dt id="lightning.regression.SDCARegressor.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>alpha=1.0</em>, <em>l1_ratio=0</em>, <em>loss='squared'</em>, <em>gamma=1.0</em>, <em>max_iter=100</em>, <em>tol=0.001</em>, <em>callback=None</em>, <em>n_calls=None</em>, <em>verbose=0</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sdca.html#SDCARegressor.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SDCARegressor.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>alpha=1.0</em>, <em>l1_ratio=0</em>, <em>loss='squared'</em>, <em>max_iter=100</em>, <em>tol=0.001</em>, <em>callback=None</em>, <em>n_calls=None</em>, <em>verbose=0</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/sdca.html#SDCARegressor.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.SDCARegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

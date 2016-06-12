@@ -12,10 +12,11 @@ Given a ground truth vectors, the signal that we observe is given by
      y = sign(X ground_truth + noise)
 
 where X is a random matrix. We obtain the vector ground_truth by solving
-an optimization problem using lightning FistaClassifier.
+an optimization problem using lightning's :class:`lightning.classification.FistaClassifier`.
 
 The 1D total variation is also known as fused lasso.
 """
+# Author: Fabian Pedregosa <f@bianp.net>
 
 import numpy as np
 import matplotlib.pyplot as plt
