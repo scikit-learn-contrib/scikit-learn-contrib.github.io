@@ -21,6 +21,7 @@ This example compares different solvers with L2 regularization.
   SDCA
   PCD
   AdaGrad
+  SAGA
   SAG
 
 
@@ -30,6 +31,6 @@ This example compares different solvers with L2 regularization.
 .. literalinclude:: plot_l2_solvers.py
     :lines: 8-
 
-**Total running time of the example:**  2.08 seconds
-( 0 minutes  2.08 seconds)
+**Total running time of the example:**  5.07 seconds
+( 0 minutes  5.07 seconds)
     

@@ -74,9 +74,11 @@
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -119,13 +121,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../intro.html#fista">FISTA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../intro.html#stochastic-gradient-method-sgd">Stochastic gradient method (SGD)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../intro.html#adagrad">AdaGrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../intro.html#stochastic-averaged-gradient-sag">Stochastic averaged gradient (SAG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../intro.html#stochastic-averaged-gradient-sag-and-saga">Stochastic averaged gradient (SAG and SAGA)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../intro.html#stochastic-variance-reduced-gradient-svrg">Stochastic variance-reduced gradient (SVRG)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../intro.html#prank">PRank</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -214,15 +218,21 @@
 <span class="kn">from</span> <span class="nn">.penalty</span> <span class="kn">import</span> <span class="n">L1Penalty</span>
 <span class="kn">from</span> <span class="nn">.penalty</span> <span class="kn">import</span> <span class="n">L1L2Penalty</span>
 <span class="kn">from</span> <span class="nn">.penalty</span> <span class="kn">import</span> <span class="n">TracePenalty</span>
+<span class="kn">from</span> <span class="nn">.penalty</span> <span class="kn">import</span> <span class="n">SimplexConstraint</span>
+<span class="kn">from</span> <span class="nn">.penalty</span> <span class="kn">import</span> <span class="n">TotalVariation1DPenalty</span>
 
 
 <span class="k">class</span> <span class="nc">_BaseFista</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">_get_penalty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">penalty</span><span class="p">,</span> <span class="s1">&#39;projection&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">penalty</span>
         <span class="n">penalties</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;l1&quot;</span><span class="p">:</span> <span class="n">L1Penalty</span><span class="p">(),</span>
             <span class="s2">&quot;l1/l2&quot;</span><span class="p">:</span> <span class="n">L1L2Penalty</span><span class="p">(),</span>
             <span class="s2">&quot;trace&quot;</span><span class="p">:</span> <span class="n">TracePenalty</span><span class="p">(),</span>
+            <span class="s2">&quot;simplex&quot;</span><span class="p">:</span> <span class="n">SimplexConstraint</span><span class="p">(),</span>
+            <span class="s2">&quot;tv1d&quot;</span><span class="p">:</span> <span class="n">TotalVariation1DPenalty</span><span class="p">()</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">penalties</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">penalty</span><span class="p">]</span>
 
@@ -332,12 +342,16 @@
 <span class="sd">    loss : str, &#39;squared_hinge&#39;, &#39;log&#39;, &#39;modified_huber&#39;, &#39;squared&#39;</span>
 <span class="sd">        The loss function to be used.</span>
 
-<span class="sd">    penalty : str, &#39;l2&#39;, &#39;l1&#39;, &#39;l1/l2&#39;</span>
-<span class="sd">        The penalty to be used.</span>
+<span class="sd">    penalty : str or Penalty object, &#39;l2&#39;, &#39;l1&#39;, &#39;l1/l2&#39;, &#39;simplex&#39;</span>
+<span class="sd">        The penalty or constraint to be used.</span>
 
 <span class="sd">        - l2: ridge</span>
 <span class="sd">        - l1: lasso</span>
 <span class="sd">        - l1/l2: group lasso</span>
+<span class="sd">        - tv1d: 1-dimensional total variation (also known as fused lasso)</span>
+<span class="sd">        - simplex: simplex constraint</span>
+<span class="sd">        The method can also take an arbitrary Penalty object, i.e., an instance</span>
+<span class="sd">        that implements methods projection regularization method (see file penalty.py)</span>
 
 <span class="sd">    multiclass : bool</span>
 <span class="sd">        Whether to use a direct multiclass formulation (True) or one-vs-rest</span>
@@ -421,16 +435,17 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    penalty : str, &#39;l2&#39;, &#39;l1&#39;, &#39;l1/l2&#39;</span>
-<span class="sd">        The penalty to be used.</span>
+<span class="sd">    penalty : str or Penalty object, {&#39;l2&#39;, &#39;l1&#39;, &#39;l1/l2&#39;, &#39;simplex&#39;}</span>
+<span class="sd">        The penalty or constraint to be used.</span>
 
 <span class="sd">        - l2: ridge</span>
 <span class="sd">        - l1: lasso</span>
 <span class="sd">        - l1/l2: group lasso</span>
+<span class="sd">        - tv1d: 1-dimensional total variation (also known as fussed lasso)</span>
+<span class="sd">        - simplex: simplex constraint</span>
+<span class="sd">        The method can also take an arbitrary Penalty object, i.e., an instance</span>
+<span class="sd">        that implements methods projection regularization method (see file penalty.py)</span>
 
-<span class="sd">    multiclass : bool</span>
-<span class="sd">        Whether to use a direct multiclass formulation (True) or one-vs-rest</span>
-<span class="sd">        (False).</span>
 
 <span class="sd">    C : float</span>
 <span class="sd">        Weight of the loss term.</span>
@@ -459,13 +474,11 @@
 <span class="sd">        Verbosity level.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="FistaRegressor.__init__"><a class="viewcode-back" href="../../../generated/lightning.regression.FistaRegressor.html#lightning.classification.FistaRegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span> <span class="n">multiclass</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                 <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                 <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="FistaRegressor.__init__"><a class="viewcode-back" href="../../../generated/lightning.regression.FistaRegressor.html#lightning.classification.FistaRegressor.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                 <span class="n">max_steps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="n">C</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">penalty</span> <span class="o">=</span> <span class="n">penalty</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">multiclass</span> <span class="o">=</span> <span class="n">multiclass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_steps</span> <span class="o">=</span> <span class="n">max_steps</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">eta</span>

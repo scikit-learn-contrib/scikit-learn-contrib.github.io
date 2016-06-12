@@ -79,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -121,13 +122,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#fista">FISTA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-gradient-method-sgd">Stochastic gradient method (SGD)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#adagrad">AdaGrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-averaged-gradient-sag">Stochastic averaged gradient (SAG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-averaged-gradient-sag-and-saga">Stochastic averaged gradient (SAG and SAGA)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-variance-reduced-gradient-svrg">Stochastic variance-reduced gradient (SVRG)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../intro.html#prank">PRank</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../auto_examples/index.html">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -199,7 +201,7 @@
 <h1>lightning.regression.FistaRegressor<a class="headerlink" href="#lightning-regression-fistaregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="lightning.regression.FistaRegressor">
-<em class="property">class </em><code class="descclassname">lightning.regression.</code><code class="descname">FistaRegressor</code><span class="sig-paren">(</span><em>C=1.0</em>, <em>alpha=1.0</em>, <em>penalty='l1'</em>, <em>multiclass=False</em>, <em>max_iter=100</em>, <em>max_steps=30</em>, <em>eta=2.0</em>, <em>sigma=1e-05</em>, <em>callback=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/fista.html#FistaRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.FistaRegressor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">lightning.regression.</code><code class="descname">FistaRegressor</code><span class="sig-paren">(</span><em>C=1.0</em>, <em>alpha=1.0</em>, <em>penalty='l1'</em>, <em>max_iter=100</em>, <em>max_steps=30</em>, <em>eta=2.0</em>, <em>sigma=1e-05</em>, <em>callback=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/fista.html#FistaRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.FistaRegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimator for learning linear classifiers by FISTA.</p>
 <p>The objective functions considered take the form</p>
 <p>minimize F(W) = C * L(W) + alpha * R(W),</p>
@@ -208,19 +210,18 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>penalty</strong> : str, &#8216;l2&#8217;, &#8216;l1&#8217;, &#8216;l1/l2&#8217;</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>penalty</strong> : str or Penalty object, {&#8216;l2&#8217;, &#8216;l1&#8217;, &#8216;l1/l2&#8217;, &#8216;simplex&#8217;}</p>
 <blockquote>
-<div><p>The penalty to be used.</p>
+<div><p>The penalty or constraint to be used.</p>
 <ul class="simple">
 <li>l2: ridge</li>
 <li>l1: lasso</li>
 <li>l1/l2: group lasso</li>
+<li>tv1d: 1-dimensional total variation (also known as fussed lasso)</li>
+<li>simplex: simplex constraint</li>
 </ul>
-</div></blockquote>
-<p><strong>multiclass</strong> : bool</p>
-<blockquote>
-<div><p>Whether to use a direct multiclass formulation (True) or one-vs-rest
-(False).</p>
+<p>The method can also take an arbitrary Penalty object, i.e., an instance
+that implements methods projection regularization method (see file penalty.py)</p>
 </div></blockquote>
 <p><strong>C</strong> : float</p>
 <blockquote>
@@ -289,7 +290,7 @@ of the line-search routine.</p>
 </table>
 <dl class="method">
 <dt id="lightning.regression.FistaRegressor.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>C=1.0</em>, <em>alpha=1.0</em>, <em>penalty='l1'</em>, <em>multiclass=False</em>, <em>max_iter=100</em>, <em>max_steps=30</em>, <em>eta=2.0</em>, <em>sigma=1e-05</em>, <em>callback=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/fista.html#FistaRegressor.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.FistaRegressor.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>C=1.0</em>, <em>alpha=1.0</em>, <em>penalty='l1'</em>, <em>max_iter=100</em>, <em>max_steps=30</em>, <em>eta=2.0</em>, <em>sigma=1e-05</em>, <em>callback=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lightning/impl/fista.html#FistaRegressor.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lightning.regression.FistaRegressor.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

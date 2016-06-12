@@ -79,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -121,13 +122,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#fista">FISTA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-gradient-method-sgd">Stochastic gradient method (SGD)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#adagrad">AdaGrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-averaged-gradient-sag">Stochastic averaged gradient (SAG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-averaged-gradient-sag-and-saga">Stochastic averaged gradient (SAG and SAGA)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#stochastic-variance-reduced-gradient-svrg">Stochastic variance-reduced gradient (SVRG)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../intro.html#prank">PRank</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../auto_examples/index.html">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -215,10 +217,12 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>eta</strong> : float or string, defaults to &#8216;auto&#8217;</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>eta</strong> : float or {&#8216;auto&#8217;, &#8216;line-search&#8217;}, defaults to &#8216;auto&#8217;</p>
 <blockquote>
 <div><p>step size for the gradient updates. If set to &#8216;auto&#8217;,
-this will calculate a step size based on the input data.</p>
+this will calculate a step size based on the input data.
+If set to &#8216;line-search&#8217;, it will perform a line-search
+to find the step size based for the current iteration.</p>
 </div></blockquote>
 <p><strong>alpha</strong> : float</p>
 <blockquote>
@@ -273,7 +277,7 @@ loss functions)</p>
 <tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">decision_function</span></code>(X)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code>(X,&nbsp;y)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code>(X,&nbsp;y[,&nbsp;sample_weight])</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#lightning.classification.SAGClassifier.get_params" title="lightning.classification.SAGClassifier.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>

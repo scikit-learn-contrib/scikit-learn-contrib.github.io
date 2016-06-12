@@ -26,6 +26,31 @@ These are some examples using the lightning machine learning library
 
 .. raw:: html
 
+    <div class="thumbnailContainer" tooltip="In this example, we generate a signal that is piecewise constant. We then observe some random a...">
+
+.. only:: html
+
+  .. figure:: ./images/thumb/plot_1d_total_variation.png
+    :target: ./plot_1d_total_variation.html
+
+    :ref:`example_plot_1d_total_variation.py`
+
+
+.. raw:: html
+
+    </div>
+
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_1d_total_variation
+
+
+
+.. raw:: html
+
     <div class="thumbnailContainer" tooltip="">
 
 .. only:: html
@@ -96,6 +121,31 @@ These are some examples using the lightning machine learning library
    :hidden:
 
    ./trace
+
+
+
+.. raw:: html
+
+    <div class="thumbnailContainer" tooltip="Plot decision function of a weighted dataset, where the size of points is proportional to its w...">
+
+.. only:: html
+
+  .. figure:: ./images/thumb/plot_sample_weight.png
+    :target: ./plot_sample_weight.html
+
+    :ref:`example_plot_sample_weight.py`
+
+
+.. raw:: html
+
+    </div>
+
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_sample_weight
 
 
 

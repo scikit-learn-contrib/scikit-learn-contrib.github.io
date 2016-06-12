@@ -74,9 +74,11 @@
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -119,13 +121,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#fista">FISTA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stochastic-gradient-method-sgd">Stochastic gradient method (SGD)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adagrad">AdaGrad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#stochastic-averaged-gradient-sag">Stochastic averaged gradient (SAG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stochastic-averaged-gradient-sag-and-saga">Stochastic averaged gradient (SAG and SAGA)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stochastic-variance-reduced-gradient-svrg">Stochastic variance-reduced gradient (SVRG)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prank">PRank</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="auto_examples/index.html">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="auto_examples/plot_1d_total_variation.html">Signal recovery by 1D total variation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="auto_examples/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="auto_examples/plot_robust_regression.html">Robust regression</a></li>
 <li class="toctree-l4"><a class="reference internal" href="auto_examples/trace.html">Trace norm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto_examples/plot_sample_weight.html">SAGA: Weighted samples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="auto_examples/document_classification_news20.html">Classification of text documents</a></li>
 <li class="toctree-l4"><a class="reference internal" href="auto_examples/plot_svrg.html">Sensitivity to hyper-parameters in SVRG</a></li>
 <li class="toctree-l4"><a class="reference internal" href="auto_examples/plot_sparse_non_linear.html">Sparse non-linear classification</a></li>
@@ -197,12 +201,12 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>lightning is composed of three modules: classification, regression and ranking.
 Several solvers are available from each.</p>
-<p>If you&#8217;re not sure what solver to use, just go for <code class="xref py py-class docutils literal"><span class="pre">CDClassifier</span></code> /
-<code class="xref py py-class docutils literal"><span class="pre">CDRegressor</span></code> or <code class="xref py py-class docutils literal"><span class="pre">SDCAClassifier</span></code> / <code class="xref py py-class docutils literal"><span class="pre">SDCARegressor</span></code>. They
+<p>If you&#8217;re not sure what solver to use, just go for <a class="reference internal" href="generated/lightning.classification.CDClassifier.html#lightning.classification.CDClassifier" title="lightning.classification.CDClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.CDClassifier</span></code></a> /
+<a class="reference internal" href="generated/lightning.regression.CDRegressor.html#lightning.regression.CDRegressor" title="lightning.regression.CDRegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.CDRegressor</span></code></a> or <a class="reference internal" href="generated/lightning.classification.SDCAClassifier.html#lightning.classification.SDCAClassifier" title="lightning.classification.SDCAClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.SDCAClassifier</span></code></a> / <a class="reference internal" href="generated/lightning.regression.SDCARegressor.html#lightning.regression.SDCARegressor" title="lightning.regression.SDCARegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.SDCARegressor</span></code></a>. They
 are very fast and do not require any tedious tuning of a learning rate.</p>
 <div class="section" id="primal-coordinate-descent">
 <h2>Primal coordinate descent<a class="headerlink" href="#primal-coordinate-descent" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">CDClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">CDRegressor</span></code></p>
+<p><a class="reference internal" href="generated/lightning.classification.CDClassifier.html#lightning.classification.CDClassifier" title="lightning.classification.CDClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.CDClassifier</span></code></a>, <a class="reference internal" href="generated/lightning.regression.CDRegressor.html#lightning.regression.CDRegressor" title="lightning.regression.CDRegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.CDRegressor</span></code></a></p>
 <ul class="simple">
 <li>Main idea: update a single coordinate at a time (closed-form update when possible, coordinate-wise gradient descent otherwise)</li>
 <li>Non-smooth losses: No</li>
@@ -213,8 +217,8 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="dual-coordinate-ascent">
 <h2>Dual coordinate ascent<a class="headerlink" href="#dual-coordinate-ascent" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">LinearSVC</span></code>, <code class="xref py py-class docutils literal"><span class="pre">LinearSVR</span></code> (L2-regularization, supports shrinking)</p>
-<p><code class="xref py py-class docutils literal"><span class="pre">SDCAClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SDCARegressor</span></code> (Elastic-net, supports many losses)</p>
+<p><a class="reference internal" href="generated/lightning.classification.LinearSVC.html#lightning.classification.LinearSVC" title="lightning.classification.LinearSVC"><code class="xref py py-class docutils literal"><span class="pre">classification.LinearSVC</span></code></a>, <a class="reference internal" href="generated/lightning.regression.LinearSVR.html#lightning.regression.LinearSVR" title="lightning.regression.LinearSVR"><code class="xref py py-class docutils literal"><span class="pre">regression.LinearSVR</span></code></a> (L2-regularization, supports shrinking)</p>
+<p><a class="reference internal" href="generated/lightning.classification.SDCAClassifier.html#lightning.classification.SDCAClassifier" title="lightning.classification.SDCAClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.SDCAClassifier</span></code></a>, <a class="reference internal" href="generated/lightning.regression.SDCARegressor.html#lightning.regression.SDCARegressor" title="lightning.regression.SDCARegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.SDCARegressor</span></code></a> (Elastic-net, supports many losses)</p>
 <ul class="simple">
 <li>Main idea: update a single dual coordinate at a time (closed-form solution available for many loss functions)</li>
 <li>Non-smooth losses: Yes</li>
@@ -225,7 +229,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="fista">
 <h2>FISTA<a class="headerlink" href="#fista" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">FistaClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">FistaRegressor</span></code></p>
+<p><a class="reference internal" href="generated/lightning.classification.FistaClassifier.html#lightning.classification.FistaClassifier" title="lightning.classification.FistaClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.FistaClassifier</span></code></a>, <a class="reference internal" href="generated/lightning.regression.FistaRegressor.html#lightning.regression.FistaRegressor" title="lightning.regression.FistaRegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.FistaRegressor</span></code></a></p>
 <ul class="simple">
 <li>Main idea: accelerated proximal gradient method (uses full gradients)</li>
 <li>Non-smooth losses: No</li>
@@ -236,7 +240,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="stochastic-gradient-method-sgd">
 <h2>Stochastic gradient method (SGD)<a class="headerlink" href="#stochastic-gradient-method-sgd" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></code></p>
+<p><a class="reference internal" href="generated/lightning.classification.SGDClassifier.html#lightning.classification.SGDClassifier" title="lightning.classification.SGDClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.SGDClassifier</span></code></a>, <a class="reference internal" href="generated/lightning.regression.SGDRegressor.html#lightning.regression.SGDRegressor" title="lightning.regression.SGDRegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.SGDRegressor</span></code></a></p>
 <ul class="simple">
 <li>Main idea: replace full gradient with stochastic estimate obtained from a single sample</li>
 <li>Non-smooth losses: Yes</li>
@@ -247,7 +251,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="adagrad">
 <h2>AdaGrad<a class="headerlink" href="#adagrad" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">AdaGradClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">AdaGradRegressor</span></code></p>
+<p><a class="reference internal" href="generated/lightning.classification.AdaGradClassifier.html#lightning.classification.AdaGradClassifier" title="lightning.classification.AdaGradClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.AdaGradClassifier</span></code></a>, <a class="reference internal" href="generated/lightning.regression.AdaGradRegressor.html#lightning.regression.AdaGradRegressor" title="lightning.regression.AdaGradRegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.AdaGradRegressor</span></code></a></p>
 <ul class="simple">
 <li>Main idea: use per-feature learning rates (frequently occurring features in the gradients get small learning rates and infrequent features get higher ones)</li>
 <li>Non-smooth losses: Yes</li>
@@ -256,20 +260,20 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 <li>Multiclass: one-vs-rest</li>
 </ul>
 </div>
-<div class="section" id="stochastic-averaged-gradient-sag">
-<h2>Stochastic averaged gradient (SAG)<a class="headerlink" href="#stochastic-averaged-gradient-sag" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">SAGClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SAGRegressor</span></code></p>
+<div class="section" id="stochastic-averaged-gradient-sag-and-saga">
+<h2>Stochastic averaged gradient (SAG and SAGA)<a class="headerlink" href="#stochastic-averaged-gradient-sag-and-saga" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref py py-class docutils literal"><span class="pre">classification.classification.SAGClassifier</span></code>, <a class="reference internal" href="generated/lightning.classification.SAGAClassifier.html#lightning.classification.SAGAClassifier" title="lightning.classification.SAGAClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.SAGAClassifier</span></code></a>, <a class="reference internal" href="generated/lightning.regression.SAGRegressor.html#lightning.regression.SAGRegressor" title="lightning.regression.SAGRegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.SAGRegressor</span></code></a>, <a class="reference internal" href="generated/lightning.regression.SAGARegressor.html#lightning.regression.SAGARegressor" title="lightning.regression.SAGARegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.SAGARegressor</span></code></a></p>
 <ul class="simple">
 <li>Main idea: instead of using the full gradient (average of sample-wise gradients), compute gradient for a randomly selected sample and use out-dated gradients for other samples</li>
-<li>Non-smooth losses: No</li>
-<li>Penalties: L2</li>
+<li>Non-smooth losses: Yes (<a class="reference internal" href="generated/lightning.classification.SAGAClassifier.html#lightning.classification.SAGAClassifier" title="lightning.classification.SAGAClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.SAGAClassifier</span></code></a> and <a class="reference internal" href="generated/lightning.regression.SAGARegressor.html#lightning.regression.SAGARegressor" title="lightning.regression.SAGARegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.SAGARegressor</span></code></a>)</li>
+<li>Penalties: L1, L2, Elastic-net</li>
 <li>Learning rate: yes (not very sensitive)</li>
 <li>Multiclass: one-vs-rest</li>
 </ul>
 </div>
 <div class="section" id="stochastic-variance-reduced-gradient-svrg">
 <h2>Stochastic variance-reduced gradient (SVRG)<a class="headerlink" href="#stochastic-variance-reduced-gradient-svrg" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">SVRGClassifier</span></code>, <code class="xref py py-class docutils literal"><span class="pre">SVRGRegressor</span></code></p>
+<p><a class="reference internal" href="generated/lightning.classification.SVRGClassifier.html#lightning.classification.SVRGClassifier" title="lightning.classification.SVRGClassifier"><code class="xref py py-class docutils literal"><span class="pre">classification.SVRGClassifier</span></code></a>, <a class="reference internal" href="generated/lightning.regression.SVRGRegressor.html#lightning.regression.SVRGRegressor" title="lightning.regression.SVRGRegressor"><code class="xref py py-class docutils literal"><span class="pre">regression.SVRGRegressor</span></code></a></p>
 <ul class="simple">
 <li>Main idea: compute full gradient periodically and use it to center the gradient estimate (this can be shown to reduce the variance)</li>
 <li>Non-smooth losses: No</li>
@@ -280,7 +284,7 @@ are very fast and do not require any tedious tuning of a learning rate.</p>
 </div>
 <div class="section" id="prank">
 <h2>PRank<a class="headerlink" href="#prank" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">PRank</span></code>, <code class="xref py py-class docutils literal"><span class="pre">KernelPRank</span></code></p>
+<p><a class="reference internal" href="generated/lightning.ranking.PRank.html#lightning.ranking.PRank" title="lightning.ranking.PRank"><code class="xref py py-class docutils literal"><span class="pre">ranking.PRank</span></code></a>, <a class="reference internal" href="generated/lightning.ranking.KernelPRank.html#lightning.ranking.KernelPRank" title="lightning.ranking.KernelPRank"><code class="xref py py-class docutils literal"><span class="pre">ranking.KernelPRank</span></code></a></p>
 <ul class="simple">
 <li>Main idea: Perceptron-like algorithm for ordinal regression</li>
 <li>Penalties: L2</li>
